@@ -12,7 +12,7 @@
 	<artifactId>zveropolis</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>zveropolis</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Telegram Bot with Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -24,6 +24,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.pengrad</groupId>
+			<artifactId>java-telegram-bot-api</artifactId>
+			<version>5.7.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.liquibase</groupId>
@@ -50,6 +55,7 @@
 			<artifactId>telegrambots-spring-boot-starter</artifactId>
 			<version>6.7.0</version>
 		</dependency>
+
 	</dependencies>
 
 	<build>
