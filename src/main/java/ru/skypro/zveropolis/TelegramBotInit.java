@@ -21,9 +21,9 @@ public class TelegramBotInit extends TelegramLongPollingBot {
         String text = update.getMessage().getText();
         String message = "привет";
         if (update.hasMessage()&&update.getMessage().hasText()) {
-            SendMessage sendMessage= new SendMessage(chatId.toString(),text);
-//            sendMessage.setChatId(update.getMessage().getChatId().toString());
-//            sendMessage.setText(message);
+            SendMessage sendMessage= new SendMessage();
+            sendMessage.setChatId(chatId);
+            sendMessage.setText(message);
             try {
                 execute(sendMessage);
             } catch (TelegramApiException e) {
