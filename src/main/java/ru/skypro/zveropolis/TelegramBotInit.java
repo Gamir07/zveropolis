@@ -20,8 +20,8 @@ public class TelegramBotInit extends TelegramLongPollingBot {
         Long chatId = update.getMessage().getChatId();
         String text = update.getMessage().getText();
         String message = "привет";
-        if (update.hasMessage()&&update.getMessage().hasText()) {
-            SendMessage sendMessage= new SendMessage();
+        if (update.hasMessage() && update.getMessage().hasText()) {
+            SendMessage sendMessage = new SendMessage();
             sendMessage.setChatId(chatId);
             sendMessage.setText(message);
             try {
@@ -32,6 +32,7 @@ public class TelegramBotInit extends TelegramLongPollingBot {
         }
 
     }
+
     @Override
     public String getBotUsername() {
         return telegramBotConfiguration.getName();
