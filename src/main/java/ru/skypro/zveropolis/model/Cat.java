@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-public class Cat extends Pet{
+public class Cat extends Pet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
