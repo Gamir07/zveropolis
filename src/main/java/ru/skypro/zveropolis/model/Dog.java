@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @Entity
 @Data
 
-public class Dogs extends Pet{
+public class Dog extends Pet{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 private long id;
