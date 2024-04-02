@@ -1,7 +1,6 @@
 package ru.skypro.zveropolis.model;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -14,7 +13,7 @@ import javax.persistence.Id;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-public class Cats extends Pet{
+public class Cat extends Pet{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
