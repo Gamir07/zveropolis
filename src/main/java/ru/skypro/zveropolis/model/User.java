@@ -1,5 +1,6 @@
 package ru.skypro.zveropolis.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,9 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-@NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class User {
 
     @Id
@@ -21,8 +20,8 @@ public class User {
     private String phoneNumber;
     private boolean isVolunteer;
 
-    @OneToOne
-    @JoinColumn(name = "pet_id")
-    private Pet pet;
+//    @OneToOne
+//    @JoinColumn(name = "pet_id")
+//    private Pet pet;
 
 }
