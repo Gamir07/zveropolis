@@ -1,14 +1,12 @@
 package ru.skypro.zveropolis.model;
 
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity(name = "ShelterDog")
-public class ShelterCat{
+public class ShelterCat {
     @Column(name = "information")
     private String information;
 
