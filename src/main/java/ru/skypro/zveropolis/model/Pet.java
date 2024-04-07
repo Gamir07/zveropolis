@@ -22,9 +22,4 @@ public class Pet {
     private boolean withLimitedOpportunities;
     @Enumerated (EnumType.STRING)
     private TypeOfAnimal typeOfAnimal;
-    @Enumerated (EnumType.STRING)
-//    @ManyToOne
-//    @JoinColumn(name = "shelterCat_id")
-    private Shelter shelter;
-
 }
