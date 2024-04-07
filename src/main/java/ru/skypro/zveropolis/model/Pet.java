@@ -22,8 +22,4 @@ public class Pet {
     private boolean withLimitedOpportunities;
     @Enumerated (EnumType.STRING)
     private TypeOfAnimal typeOfAnimal;
-    @Enumerated (EnumType.STRING)
-    private Shelter shelter;
-    private boolean isAdopted;
-
 }
