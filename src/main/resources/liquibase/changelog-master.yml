@@ -1,3 +1,13 @@
 databaseChangeLog:
   - include:
-      file: liquibase/scripts/zveropolis.sql
+      file: liquibase/scripts/create-cat.sql
+  - include:
+      file: liquibase/scripts/create-dog.sql
+  - include:
+      file: liquibase/scripts/create-shelterCat.sql
+  - include:
+      file: liquibase/scripts/create-shelterDog.sql
+  - include:
+      file: liquibase/scripts/create-pet.sql
+  - include:
+      file: liquibase/scripts/create-user.sql
