@@ -6,17 +6,15 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(schema = "user")
-public class User {
-
+//@Table(schema = "users")
+public class Users {
     @Id
     private long chatId;
-    private String name;
+    private String firstName;
+    private String username;
     private String phoneNumber;
     private boolean isVolunteer;
-
     @OneToOne
     @JoinColumn(name = "pet_id")
     private Pet pet;
-
 }

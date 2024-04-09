@@ -3,7 +3,7 @@ package ru.skypro.zveropolis.relocation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import ru.skypro.zveropolis.model.User;
+import ru.skypro.zveropolis.model.Users;
 import ru.skypro.zveropolis.repository.UserRepository;
 
 import java.util.HashMap;
@@ -34,9 +34,9 @@ public class Relocation {
         if (stateMap.containsKey(chatId)) {
             return true;
         }
-        User user = new User();
-        user.setChatId(chatId);
-        userRepository.save(user);
+        Users users = new Users();
+        users.setChatId(chatId);
+        userRepository.save(users);
         stateMap.put(chatId, StateBot.START_MENU);
         return false;
     }

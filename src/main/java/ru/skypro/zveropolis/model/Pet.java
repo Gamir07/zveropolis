@@ -1,6 +1,5 @@
 package ru.skypro.zveropolis.model;
 
-import liquibase.pro.packaged.B;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,16 +9,19 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@NoArgsConstructor
-@Builder
-@AllArgsConstructor
+//@NoArgsConstructor
+//@Builder
+//@AllArgsConstructor
 public class Pet {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private int age;
     private boolean withLimitedOpportunities;
-    @Enumerated (EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     private TypeOfAnimal typeOfAnimal;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private Users users;
 }
