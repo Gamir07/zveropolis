@@ -40,7 +40,7 @@ public class TelegramBotInit extends TelegramLongPollingBot {
 //                    throw new RuntimeException(e);
 //                }
 //            }
-        }
+    }
 
     @Override
     public String getBotUsername() {

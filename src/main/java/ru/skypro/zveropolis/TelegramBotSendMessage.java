@@ -14,7 +14,8 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 @DependsOn("telegramBotInit")
 public class TelegramBotSendMessage {
     private final TelegramBotInit telegramBotInit;
-    public Message sendMessage(SendMessage sendMessage){
+
+    public Message sendMessage(SendMessage sendMessage) {
         try {
             return telegramBotInit.execute(sendMessage);
         } catch (TelegramApiException e) {
