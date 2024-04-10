@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset kuznetsovanaya:create_users
+--changeset kuznetsovanaya:create_user
 create table users
 (
     chat_id      bigint primary key,
@@ -22,22 +22,6 @@ create table pet
     foreign key (user_id) references users (chat_id)
 );
 
---changeset kuznetsovanaya:alter_table_users
-alter table users
-    (
-    add column pet_id bigint,
-    add constraint pet_p foreign key (pet_id) references pet (id)
-    );
-
---changeset kuznetsovanaya:create_photo
-create table photo
-(
-    id         bigserial primary key,
-    file_size  bigint,
-    media_type text,
-    data       bytea
-);
-
 --changeset kuznetsovanaya:create_report
 create table report
 (
@@ -45,12 +29,21 @@ create table report
     diet                 text,
     health_and_addiction text,
     behavior             text,
-    photo_id             bigint,
-    foreign key (photo_id) references photo (id),
-    user_id              bigint not null,
-    foreign key (user_id) references users (chat_id),
+--     user_id              bigint not null,
+--     foreign key (user_id) references users (chat_id),
     pet_id               bigint,
     foreign key (pet_id) references pet (id)
+);
+
+--changeset kuznetsovanaya:create_photo
+create table photo
+(
+    id         bigserial primary key,
+    file_size  bigint,
+    media_type text,
+    data       bytea,
+    report_id             bigint,
+    foreign key (report_id) references report (id)
 );
 
 -- --changeset kuznetsovanaya:create_shelter

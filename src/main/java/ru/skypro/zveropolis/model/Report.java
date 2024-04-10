@@ -9,18 +9,15 @@ import java.util.List;
 @Data
 public class Report {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String diet;
     private String healthAndAddiction;
     private String behavior;
-    @OneToMany
-    @JoinColumn(name = "photo_id")
-    private List<Photo> photo;
-    @OneToMany
-    @JoinColumn(name = "user_id")
-    private List<Users> users;
-    @OneToMany
+//    @OneToMany
+//    @JoinColumn(name = "user_id")
+//    private List<Users> users;
+    @ManyToOne
     @JoinColumn(name = "pet_id")
-    private List<Pet> pet;
+    private Pet pet;
 }

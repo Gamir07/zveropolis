@@ -3,6 +3,7 @@ package ru.skypro.zveropolis.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -14,7 +15,7 @@ public class Users {
     private String username;
     private String phoneNumber;
     private boolean isVolunteer;
-    @OneToOne
-    @JoinColumn(name = "pet_id")
-    private Pet pet;
+//    @OneToMany
+//    @JoinColumn(name = "pet_id")
+//    private List<Pet> pet;
 }

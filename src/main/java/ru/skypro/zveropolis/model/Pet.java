@@ -21,7 +21,7 @@ public class Pet {
     private boolean withLimitedOpportunities;
     @Enumerated(EnumType.STRING)
     private TypeOfAnimal typeOfAnimal;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private Users users;
 }
