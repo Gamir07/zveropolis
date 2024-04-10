@@ -1,10 +1,11 @@
 package ru.skypro.zveropolis.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Arrays;
 
+@NoArgsConstructor
 @Entity
 @Data
 public class PetReport {
@@ -12,21 +13,10 @@ public class PetReport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Lob
-    private byte[] petPhoto;
+//    @Lob
+//    private byte[] animalPhoto;
 
     private String ration;
     private String generalCondition;
     private String behaviorChanges;
-
-    @Override
-    public String toString() {
-        return "PetReport{" +
-                "id=" + id +
-                ", petPhoto=" + Arrays.toString(petPhoto) +
-                ", ration='" + ration + '\'' +
-                ", generalCondition='" + generalCondition + '\'' +
-                ", behaviorChanges='" + behaviorChanges + '\'' +
-                '}';
-    }
 }
