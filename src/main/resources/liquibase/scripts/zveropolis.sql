@@ -42,7 +42,7 @@ create table photo
     file_size  bigint,
     media_type text,
     data       bytea,
-    report_id             bigint,
+    report_id  bigint,
     foreign key (report_id) references report (id)
 );
 
@@ -50,6 +50,7 @@ create table photo
 create table shelter
 (
     id                                      bigserial primary key,
+    greeting                                text,
     info                                    text,
     dating_rules                            text,
     adoption_documents                      text,

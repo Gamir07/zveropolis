@@ -11,6 +11,7 @@ public class Shelter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String greeting;
     private String info;
     private String datingRules;
     private String adoptionDocuments;
