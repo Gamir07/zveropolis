@@ -23,8 +23,7 @@ public class Pet {
     @Enumerated (EnumType.STRING)
     private TypeOfAnimal typeOfAnimal;
     @Enumerated (EnumType.STRING)
-//    @ManyToOne
-//    @JoinColumn(name = "shelterCat_id")
     private Shelter shelter;
+    private boolean isAdopted;
 
 }
