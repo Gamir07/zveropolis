@@ -10,6 +10,7 @@ import ru.skypro.zveropolis.TelegramBotSendMessage;
 import ru.skypro.zveropolis.model.Shelter;
 import ru.skypro.zveropolis.model.TypeOfAnimal;
 import ru.skypro.zveropolis.repository.ShelterRepository;
+import ru.skypro.zveropolis.repository.SubscriberRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,18 +19,24 @@ import java.util.List;
 public class CatMenu implements State{
     private final TelegramBotSendMessage telegramBotSendMessage;
     private final ShelterRepository shelterRepository;
+    private final SubscriberRepository subscriberRepository;
+    private final Relocation relocation;
     private final String INFORMATION_ABOUT_SHELTER = "INFORMATION_ABOUT_SHELTER";
     private final String HOW_TAKE_PET = "HOW_TAKE_PET";
     private final String SEND_REPORT = "SEND_REPORT";
     private final String CALL_VOLUNTEER = "CALL_VOLUNTEER";
     private final String BACK = "BACK";
     private final String CAT_SHELTER = "CAT_SHELTER";
+    private final String BACK_CAT_REPORT = "BACK_CAT_REPORT";
 
 
 
-    public CatMenu(@Lazy TelegramBotSendMessage telegramBotSendMessage, ShelterRepository shelterRepository) {
+
+    public CatMenu(@Lazy TelegramBotSendMessage telegramBotSendMessage, ShelterRepository shelterRepository, SubscriberRepository subscriberRepository, @Lazy Relocation relocation) {
         this.telegramBotSendMessage = telegramBotSendMessage;
         this.shelterRepository = shelterRepository;
+        this.subscriberRepository = subscriberRepository;
+        this.relocation = relocation;
     }
 
     @Override
@@ -101,19 +108,30 @@ public class CatMenu implements State{
                         firstByTypeOfAnimal.getGreeting(), chatId));
             }
             case INFORMATION_ABOUT_SHELTER -> {
-
+                telegramBotSendMessage.sendMessage(createSendMessage(
+                        firstByTypeOfAnimal.getInfo(), chatId
+                ));
             }
             case HOW_TAKE_PET -> {
-
+                telegramBotSendMessage.sendMessage(createSendMessage(
+                        firstByTypeOfAnimal.getDatingRules(), chatId
+                ));
             }
             case SEND_REPORT -> {
-
+                subscriberRepository.putStateBot(chatId, StateBot.REPORT_CAT_MENU);
+                State state = relocation.getState(chatId);
+                state.execute(update);
             }
             case CALL_VOLUNTEER -> {
 
             }
             case BACK -> {
-
+                subscriberRepository.putStateBot(chatId, StateBot.START_MENU);
+                State state = relocation.getState(chatId);
+                state.execute(update);
+            }
+            case BACK_CAT_REPORT ->{
+                telegramBotSendMessage.sendMessage(createSendMessage("Вы вернулись в меню кошачьего приюта", chatId));
             }
         }
     }

@@ -22,6 +22,7 @@ public class StartMenu implements State {
     private final Relocation relocation;
     private final String CAT_SHELTER = "CAT_SHELTER";
     private final String DOG_SHELTER = "DOG_SHELTER";
+    private final String BACK = "BACK";
 
     public StartMenu(@Lazy TelegramBotSendMessage telegramBotSendMessage, SubscriberRepository subscriberRepository,@Lazy Relocation relocation) {
         this.telegramBotSendMessage = telegramBotSendMessage;
@@ -60,12 +61,19 @@ public class StartMenu implements State {
         inlineKeyboardMarkup.setKeyboard(button);
         return inlineKeyboardMarkup;
     }
+    private SendMessage createSendMessage(String text, Long chatId){
+        SendMessage createSendMessage = new SendMessage();
+        createSendMessage.setText(text);
+        createSendMessage.setChatId(chatId);
+        createSendMessage.setReplyMarkup(createInlineKeyboardMarkup());
+        return createSendMessage;
+    }
 
     public Message sendMessageAtText(Update update){
         Long chatId = update.getMessage().getChatId();
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
-        sendMessage.setText("Hi");
+        sendMessage.setText("Вас приветсвует приют Зверополис");
         sendMessage.setReplyMarkup(createInlineKeyboardMarkup());
         return telegramBotSendMessage.sendMessage(sendMessage);
     }
@@ -83,6 +91,9 @@ public class StartMenu implements State {
                 subscriberRepository.putStateBot(chatId, StateBot.DOG_MENU);
                 State state = relocation.getState(chatId);
                 state.execute(update);
+            }
+            case BACK -> {
+                telegramBotSendMessage.sendMessage(createSendMessage("Вы вернулись в предыдущее меню", chatId));
             }
             default -> throw new IllegalStateException("Unexpected value: " + data);
         }
