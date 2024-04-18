@@ -32,8 +32,8 @@ public class PetService {
      * @return Optional <Pet>
      */
 
-    public Optional<Pet> getPetById(long id) {
-      return   petRepository.findById(id);
+    public Pet getPetById(long id) {
+        return petRepository.findById(id);
     }
 
     /**
@@ -43,7 +43,7 @@ public class PetService {
      */
 
     public Pet updatePet(Pet pet) {
-      return   petRepository.save(pet);
+        return   petRepository.save(pet);
     }
 
     /**
@@ -61,7 +61,7 @@ public class PetService {
      */
 
     public List<Pet> getAll() {
-       return petRepository.findAll();
+        return petRepository.findAll();
     }
 
     /**
@@ -84,12 +84,4 @@ public class PetService {
     public List<Pet> getListOf(TypeOfAnimal typeOfAnimal) {
         return petRepository.findAllByTypeOfAnimal(typeOfAnimal);
     }
-
-
-
-
-
-
-
-
 }

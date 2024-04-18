@@ -44,8 +44,8 @@ public class PetController {
     )
 
     @GetMapping("/getInfoPet/{id}")
-    public ResponseEntity<Optional<Pet>> getPet(@PathVariable long id) {
-        Optional<Pet> petToFind = petService.getPetById(id);
+    public ResponseEntity<Pet> getPet(@PathVariable long id) {
+        Pet petToFind = petService.getPetById(id);
         if (petToFind == null) {
             return ResponseEntity.notFound().build();
         }
@@ -109,5 +109,4 @@ public class PetController {
         }
         return ResponseEntity.ok(petService.getAll());
     }
-
 }
