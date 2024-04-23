@@ -1,7 +1,6 @@
 package ru.skypro.zveropolis.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,9 +43,9 @@ public class PetController {
     )
 
     @GetMapping("/getInfoPet/{id}")
-    public ResponseEntity<Pet> getPet(@PathVariable long id) {
-        Pet petToFind = petService.getPetById(id);
-        if (petToFind == null) {
+    public ResponseEntity<Optional<Pet>> getPet(@PathVariable long id) {
+        Optional<Pet> petToFind = petService.getPetById(id);
+        if (petToFind.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(petService.getPetById(id));

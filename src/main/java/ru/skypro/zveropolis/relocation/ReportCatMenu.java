@@ -44,6 +44,8 @@ public class ReportCatMenu implements State{
     public void sendMessageAtCallback(Update update){
         Long chatId = update.getCallbackQuery().getMessage().getChatId();
         String data = update.getCallbackQuery().getData();
+
+        update.getCallbackQuery().setId(String.valueOf(chatId));
         switch (data){
             case BACK_CAT_REPORT -> {
                 subscriberRepository.putStateBot(chatId, StateBot.CAT_MENU);

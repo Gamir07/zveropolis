@@ -1,12 +1,15 @@
 package ru.skypro.zveropolis.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Data
+
 public class Shelter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

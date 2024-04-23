@@ -90,7 +90,7 @@ public class CatMenu implements State{
         return inlineKeyboardMarkup;
     }
 
-    private SendMessage createSendMessage(String text, Long chatId){
+    SendMessage createSendMessage(String text, Long chatId){
         SendMessage createSendMessage = new SendMessage();
         createSendMessage.setText(text);
         createSendMessage.setChatId(chatId);
