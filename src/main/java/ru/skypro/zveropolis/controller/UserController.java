@@ -12,11 +12,12 @@ import ru.skypro.zveropolis.service.UserService;
 import java.util.Optional;
 
 @RestController
-@RequestMapping ("/user")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
-    private  UserService userService;
+    private UserService userService;
+
     @Operation(
             summary = "Добавление волонтера"
     )
@@ -28,12 +29,13 @@ public class UserController {
             )
     })
     @PostMapping
-    public ResponseEntity <Users> createVolonteer(Users user) {
+    public ResponseEntity<Users> createVolonteer(Users user) {
         if (user.isVolunteer()) {
             return ResponseEntity.ok(userService.createUser(user));
         }
-        return  ResponseEntity.badRequest().build();
+        return ResponseEntity.badRequest().build();
     }
+
     @Operation(
             summary = "Получение информации о волонтере"
     )
@@ -45,7 +47,7 @@ public class UserController {
             )
     })
 
-    @GetMapping ("/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Optional<Users>> getVolonteerInfo(@PathVariable long id) {
         Optional<Users> volonteerToFind = userService.getUserInfo(id);
         if (volonteerToFind.get().isVolunteer()) {
@@ -54,6 +56,7 @@ public class UserController {
 
         return ResponseEntity.notFound().build();
     }
+
     @Operation(
             summary = "Коррекция информации о волонтере"
     )
@@ -66,13 +69,14 @@ public class UserController {
     })
 
     @PutMapping
-    public ResponseEntity <Users> editVolonteerInfo(Users user) {
+    public ResponseEntity<Users> editVolonteerInfo(Users user) {
         Users volonteerToEdit = userService.editUser(user);
         if (volonteerToEdit.isVolunteer()) {
             return ResponseEntity.ok(volonteerToEdit);
         }
         return ResponseEntity.badRequest().build();
     }
+
     @Operation(
             summary = "Удаление волонтера"
     )
@@ -84,9 +88,9 @@ public class UserController {
             )
     })
 
-    @DeleteMapping ("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity deleteVolonteer(@PathVariable long id) {
-        Optional <Users> volonteerToDelete = userService.getUserInfo(id);
+        Optional<Users> volonteerToDelete = userService.getUserInfo(id);
         if (volonteerToDelete.get().isVolunteer()) {
             userService.deleteUser(id);
             return ResponseEntity.ok().build();

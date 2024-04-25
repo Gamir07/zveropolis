@@ -17,13 +17,14 @@ import java.util.Optional;
 public class PetService {
     @Autowired
     private final PetRepository petRepository;
+
     /**
      * Сохраняет заданную сущность.
      * Используется метод репозитория {@link JpaRepository#save(Object)}
      *
      * @param pet сохраняемая сущность
      */
-    public void addPet (Pet pet) {
+    public void addPet(Pet pet) {
         petRepository.save(pet);
     }
 
@@ -40,16 +41,18 @@ public class PetService {
 
     /**
      * Позволяет обновить информацию о питомце
+     *
      * @param pet сущность питомца
      * @return обновленные данные питомца
      */
 
     public Pet updatePet(Pet pet) {
-        return   petRepository.save(pet);
+        return petRepository.save(pet);
     }
 
     /**
      * Позволяет удалить питомца из базы данных
+     *
      * @param id идентификатор питомца
      */
 
@@ -59,6 +62,7 @@ public class PetService {
 
     /**
      * Позволяет получить список всех питомцев
+     *
      * @return список всех питомцев
      */
 
@@ -68,17 +72,19 @@ public class PetService {
 
     /**
      * Позволяет получить список питомцев, отданных под опеку или нет, с сортировкой по типу животного
-     * @param isAdopted под опекой ли питомец ({@code true} - да, под опекой, {@code false} -нет, находится в приюте, ждет опеки)
+     *
+     * @param isAdopted    под опекой ли питомец ({@code true} - да, под опекой, {@code false} -нет, находится в приюте, ждет опеки)
      * @param typeOfAnimal вид животного
      * @return список питомцев
      */
 
     public List<Pet> getPetsAdopted(boolean isAdopted, TypeOfAnimal typeOfAnimal) {
-        return petRepository.findAllByIsAdoptedAndTypeOfAnimal(isAdopted,typeOfAnimal);
+        return petRepository.findAllByIsAdoptedAndTypeOfAnimal(isAdopted, typeOfAnimal);
     }
 
     /**
      * Повзоляет получить список питомцев, с сортировкой по виду животного
+     *
      * @param typeOfAnimal вид животного (определены в {@link TypeOfAnimal}
      * @return список животных определенного вида
      */

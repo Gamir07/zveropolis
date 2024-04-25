@@ -51,7 +51,7 @@ public class PetController {
         return ResponseEntity.ok(petService.getPetById(id));
     }
 
-    @Operation (
+    @Operation(
             summary = "Коррекция информации о питомце"
     )
 
@@ -64,12 +64,13 @@ public class PetController {
         return ResponseEntity.ok(petToUpdate);
 
     }
+
     @Operation(
             summary = "Удаление данных о питомце"
     )
 
-    @DeleteMapping ("/deletePet/{id}")
-    public  ResponseEntity <Void> deletePet (@PathVariable long id) {
+    @DeleteMapping("/deletePet/{id}")
+    public ResponseEntity<Void> deletePet(@PathVariable long id) {
         petService.deletePet(id);
         return ResponseEntity.ok().build();
     }
@@ -85,6 +86,7 @@ public class PetController {
         }
         return ResponseEntity.ok(petService.getListOf(typeOfAnimal));
     }
+
     @Operation(
 
             summary = "Получение списка питомцев под опекой"
@@ -95,14 +97,15 @@ public class PetController {
         if (typeOfAnimal == null) {
             return ResponseEntity.badRequest().build();
         }
-        return ResponseEntity.ok(petService.getPetsAdopted(isAdopted,typeOfAnimal));
+        return ResponseEntity.ok(petService.getPetsAdopted(isAdopted, typeOfAnimal));
     }
+
     @Operation(
             summary = "Получение списка всех питомцев"
     )
 
     @GetMapping("/getListOfAllPets")
-    public ResponseEntity <List<Pet>> getListOfAllPets () {
+    public ResponseEntity<List<Pet>> getListOfAllPets() {
         if (petService.getAll().isEmpty()) {
             return ResponseEntity.notFound().build();
         }
